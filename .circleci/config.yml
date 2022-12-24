@@ -26,7 +26,8 @@ jobs:
       - checkout
       - run:
           name: "print my name"
-          command: "echo ${MY_ENV_VAR}"
+          command: |
+            echo ${MY_ENV_VAR}
 workflows:
   say-hello-workflow:
     jobs:
