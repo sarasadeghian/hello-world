@@ -19,6 +19,14 @@ jobs:
       - run:
           name: "Say world"
           command: "echo world"
+  print-my-name:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: "print my name"
+          command: "echo ${MY_ENV_VAR}"
 workflows:
   say-hello-workflow:
     jobs:
@@ -26,3 +34,7 @@ workflows:
       - print-world:
           requires:
             - print-hello
+      - print-my-name:
+          requires:
+            - print-hello
+            - print-world
